@@ -4,18 +4,19 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+
+    runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js 16.14.0
-        uses: actions/setup-node@v1
-        with:
-          node-version: 16.14.0
-      - name: Build the Angular project
-        run: npm run build -- --configuration=production
-        uses: JamesIves/github-pages-deploy-action@releases/v2
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BASE_BRANCH: master
-          BRANCH: gh-pages
-          FOLDER: dist/Portfolio
+    - uses: actions/checkout@v1
+    - name: Use Node.js 16
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16
+    - name: Build and Deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v2
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        BASE_BRANCH: main
+        BRANCH: gh-pages
+        FOLDER: dist
+        BUILD_SCRIPT: npm install && npm run build
