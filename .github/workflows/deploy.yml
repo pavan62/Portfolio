@@ -37,5 +37,5 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: main
-          folder: dist # Replace with your actual folder name
+          folder: ./dist # Replace with your actual folder name
           token: ${{ secrets.ACCESS_TOKEN }}
