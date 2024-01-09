@@ -72,4 +72,5 @@ jobs:
       - name: Deploy the Angular project to GitHub Pages
         uses: actions/github-pages@v3
         with:
+          branch: gh-pages
           publish-dir: ./dist
